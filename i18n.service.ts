@@ -20,7 +20,7 @@ export class i18n {
 
 
     t(code: any, info: any): string {
-        console.log('languageCode', this.languageCode);
+        // console.log('languageCode', this.languageCode);
         if (!code) {
             return 'No code';
         }
