@@ -24,3 +24,13 @@ export class AppService() {
     {{ a.t('email') }}
     {{ t({ko: '어서오세요 #name님', en: 'Welcome, #name.'}, {name: 'ABC'}) }}
 ````
+
+## Sinario
+
+* In `texts.ts`, you can extend another `language file`.
+
+```` ts
+import { defaultTexts } from './default-texts';
+export const texts = {};
+
+````
