@@ -27,10 +27,16 @@ export class AppService() {
 
 ## Sinario
 
-* In `texts.ts`, you can extend another `language file`.
+* In `[domain].ts`, you can extend another `language file`.
 
 ```` ts
 import { defaultTexts } from './default-texts';
-export const texts = {};
+export let texts: any = {
+    freetalk: { en: 'Freetalk', ko: '자유토론' }
+};
+texts = Object.assign(defaultTexts, texts); // overwrite defautls.
+//                                  ^^^^^
+//                                  This overwrite defaults.
+
 
 ````
