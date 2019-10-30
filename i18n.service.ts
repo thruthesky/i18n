@@ -19,6 +19,12 @@ export class i18n {
     texts: any;
 
 
+    /**
+     *
+     * @note If test of `languageCode` does not exists, it falls back to `en` text.
+     * @param code code
+     * @param info patch information
+     */
     t(code: any, info: any): string {
         // console.log('languageCode', this.languageCode);
         if (!code) {
@@ -78,6 +84,7 @@ export class i18n {
 
     /**
      * Returns translated text string.
+     * @note If test of `languageCode` does not exists, it falls back to `en` text.
      * @param code code and text to translate
      * @param info information to add on the translated text
      * @note This is a complete function for text translation.
