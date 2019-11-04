@@ -1,13 +1,19 @@
-import { Injectable } from '@angular/core';
-
 
 
 /**
  * This returns translated text of the code.
  * @param code text code to get the translated text of
  * @example
+ *      i18n.texts = {hello: {en: 'Helo, #name', ko: '안녕, #name'}};
+ *      i18n.languageCode = 'ko';
+ *      console.log('i18n.texts', i18n.texts);
+ *      console.log('hello: ', i18n.t('hello', {name: '친구야'}));
+ *
+ * @example
  *      class ComponentClass {
- *          t = t;
+ *          t(code, info) {
+ *              i18n.t(code, info);
+ *          }
  *      }
  *      {{ t('name') }}       // `name` is the key in `texts.ts`
  *      {{ t({en: '...', ko: '...' }) }}  // You can input the complete translation in page.
@@ -15,8 +21,8 @@ import { Injectable } from '@angular/core';
  *      {{ t({ko: '어서오세요 #name님', en: 'Welcome, #name.'}, {name: 'ABC'}) }}    // text object with text translation
  */
 export class i18n {
-    languageCode: string;
-    texts: any;
+    static languageCode: string;
+    static texts: any;
 
 
     /**
@@ -25,7 +31,7 @@ export class i18n {
      * @param code code
      * @param info patch information
      */
-    t(code: any, info: any): string {
+    static t(code: any, info?: any): string {
         // console.log('languageCode', this.languageCode);
         if (!code) {
             return 'No code';
@@ -66,7 +72,7 @@ export class i18n {
      *      _.patchmarker( 'Unknown #no', {no: 123} ) // returns 'Unknown 123'
      *
      */
-    patchMarker(str: string, info: object = null): string {
+    static patchMarker(str: string, info: object = null): string {
 
         if (info === null || typeof info !== 'object') {
             return str;
@@ -100,7 +106,7 @@ export class i18n {
      * @example
      *    this.translate({en: 'Name: #name', ko: '이름: #name'}, {name: 'JaeHo'});
      */
-    translate(code: object, info?: object): string {
+    static translate(code: object, info?: object): string {
         // console.log('lang: ', this.languageCode);
         if (!code) {
             return 'CODE_EMPTY';
